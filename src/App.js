@@ -111,6 +111,7 @@ class App extends React.Component {
           dailyData={dailyData}
         />
         <Alert />
+        <footer>© <a href="https://github.com/magersoft" target="_blank" rel="noopener noreferrer">Magersoft</a> { new Date().getFullYear() }</footer>
       </div>
     );
   }
