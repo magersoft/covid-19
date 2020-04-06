@@ -3,9 +3,17 @@ import React from 'react';
 import { Cards, Chart, CountryPicker, Alert } from './components';
 import { playSound } from './components/Alert/playSound';
 import { fetchDailyData, fetchData } from './api';
-import style from './App.module.scss'
+import { ThemeProvider } from '@material-ui/styles';
+import { createMuiTheme } from '@material-ui/core';
+import style from './App.module.scss';
 
 import coronaImg from './assets/image.png';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark'
+  }
+});
 
 class App extends React.Component {
   state = {
@@ -101,18 +109,20 @@ class App extends React.Component {
     const { data, country, dailyData } = this.state;
 
     return (
-      <div className={style.container}>
-        <img className={style.image} src={coronaImg} alt="covid-19 coronavirus" />
-        <Cards data={data} />
-        <CountryPicker handleCountryChange={this.handleCountryChange} />
-        <Chart
-          data={data}
-          country={country}
-          dailyData={dailyData}
-        />
-        <Alert />
-        <footer>© <a href="https://github.com/magersoft" target="_blank" rel="noopener noreferrer">Magersoft</a> { new Date().getFullYear() }</footer>
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className={style.container}>
+          <img className={style.image} src={coronaImg} alt="covid-19 coronavirus" />
+          <Cards data={data} />
+          <CountryPicker handleCountryChange={this.handleCountryChange} />
+          <Chart
+            data={data}
+            country={country}
+            dailyData={dailyData}
+          />
+          <Alert />
+          <footer>© <a href="https://github.com/magersoft" target="_blank" rel="noopener noreferrer">Magersoft</a> { new Date().getFullYear() }</footer>
+        </div>
+      </ThemeProvider>
     );
   }
 }
