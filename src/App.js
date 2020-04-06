@@ -52,9 +52,9 @@ class App extends React.Component {
       const data = await fetchData(this.country);
       const dailyData = await fetchDailyData();
 
-      const { confirmed, deaths } = data;
+      const { lastUpdate } = data;
 
-      if (tempData.confirmed.value !== confirmed.value || tempData.deaths.value !== deaths.value) {
+      if (tempData.lastUpdate !== lastUpdate) {
         tempData = data;
         this.setState({ data, dailyData });
         playSound();
@@ -77,8 +77,6 @@ class App extends React.Component {
 
     const deathsDiff = deathsX - deathsY;
     const confirmedDiff = confirmedX - confirmedY;
-
-    console.log(deathsDiff, confirmedDiff);
 
     let randomTime = Math.floor(Math.random() * 100000) / 2;
 
