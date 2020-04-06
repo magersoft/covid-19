@@ -18,7 +18,7 @@ const CountryPicker = ({ handleCountryChange }) => {
   return (
     <FormControl className={style.formControl}>
       <NativeSelect defaultValue="" onChange={(e) => handleCountryChange(e.target.value)}>
-        <option value="global">Global</option>
+        <option value="">Global</option>
         { fetchedCountries.map((country, idx) => <option value={country} key={idx}>{ country }</option>) }
       </NativeSelect>
     </FormControl>
